@@ -1,11 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    hello world!
-</body>
+    <style>
+      @media (max-width: 600px) {
+        body {
+          overflow-x: hidden; /* 가로 스크롤 제거 */
+        }
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 7%;
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+      }
+      .navbar dl {
+        width: 20%;
+        text-align: center;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+      }
+      .container_row {
+        display: flex;
+        flex-direction: row;
+        /* align-items: center; */
+        justify-content: start;
+      }
+      .container_colum {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .aboutMe_head {
+        background-color: white;
+        width: 100%;
+        height: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+      }
+      .aboutMe_head p {
+        width: 90%;
+        font-weight: bold;
+      }
+      .aboutMe_body {
+        width: 100%;
+        height: 85%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+      }
+      .aboutMe_body div {
+        width: 80%;
+        margin: 0;
+        padding: 1%;
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body style="margin: 0; padding: 0">
+    <div id="wrap">
+      <nav class="navbar">
+        <dl>Section0</dl>
+        <dl>Section1</dl>
+        <dl>Section2</dl>
+        <dl>section3</dl>
+        <dl>Section4</dl>
+      </nav>
+      <div id="totalpage">
+        <!-- 메인페이지 -->
+        <div class="section" id="section0"></div>
+        <!-- 자기소개 페이지-->
+        <div
+          class="section"
+          id="section1"
+          style="background-color: rgb(255, 234, 204)"
+        >
+          <div
+            class="container"
+            style="background-color: white; width: 100%; height: 80%"
+          >
+            <div class="container_row" style="width: 80%; height: 80%">
+              <div
+                style="
+                  width: 30%;
+                  display: flex;
+                  align-items: start;
+                  justify-content: center;
+                "
+              >
+                <img
+                  src="./resource/짱구1.jpg"
+                  alt=""
+                  style="
+                    width: 90%;
+                    height: 50%;
+                    object-fit: fill;
+                    border: 5px solid black;
+                    border-radius: 50%;
+                    margin: 10px;
+                  "
+                />
+              </div>
+              <div class="container_colum" style="width: 70%; height: 100%">
+                <!-- About Me.-->
+                <div class="aboutMe_head">
+                  <p class="">
+                    ✔️<span style="text-decoration: underline">About me</span>
+                  </p>
+                </div>
+                <div class="aboutMe_body">
+                  <div>
+                    <hr />
+                    <p>
+                      ⭐ 웹 개발자를 꿈꾸는
+                      <span style="font-weight: bold">핫블리</span>
+                      의 웹사이트 입니다.
+                    </p>
+
+                    <p>
+                      ⭐ 포토폴리오를 비롯한 제 이야기를 들어주시면 감사합니다.
+                    </p>
+
+                    <p>
+                      ⭐ 아직 많이 미숙하고 부족하지만 앞으로 꾸준히 성장하는
+                      페이지가 되리라고 생각합니다.
+                    </p>
+                    <hr />
+                  </div>
+                </div>
+                <!-- 기술스택.-->
+                <div class="aboutMe_head">
+                  <p class="">
+                    ✔️<span style="text-decoration: underline">기술스택</span>
+                  </p>
+                </div>
+                <div class="aboutMe_body">
+                  <div>
+                    <hr />
+                    <p>⭐ Java, Oracle, JDBC, Servlet, Mybatis, Spring</p>
+                    <p>⭐ HTML5, CSS5, JavaScript, React</p>
+                    <hr />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="section"
+          id="section2"
+          style="background-color: rgb(246, 218, 255)"
+        >
+          <p style="margin: 0px">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia saepe
+            ipsum quos, sed temporibus ex nesciunt deleniti dolores iure debitis
+            inventore nihil sint cumque, eos laboriosam vel optio numquam sequi!
+          </p>
+        </div>
+        <div
+          class="section"
+          id="section3"
+          style="background-color: rgb(219, 236, 255)"
+        >
+          <p style="margin: 0px">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+            quae aspernatur ex omnis maxime debitis sit repellendus! Laudantium
+            odit doloremque a sunt magnam iusto modi ab, itaque voluptatibus in
+            molestiae.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const totalPage_Element = document.getElementById("totalpage");
+      const sectionPages = totalPage_Element.getElementsByClassName("section");
+      const section_size = sectionPages.length;
+      //각 section별 페이지 사이즈 동적으로 부여
+      console.log(window.innerWidth);
+
+      for (let i = 0; i < section_size; i++) {
+        sectionPages[i].style.width = window.innerWidth + "px";
+        sectionPages[i].style.height = window.innerHeight - 80 + "px";
+      }
+
+      window.addEventListener("resize", () => {
+        if (window.innerHeight < 600 || window.innerWidth < 600) {
+          // 미디어 쿼리... 자바스크립트로.. 특정 값 이하로 해상도가 줄어들었을 경우에 로직
+          // TODO...
+        }
+
+        for (let i = 0; i < section_size; i++) {
+          sectionPages[i].style.width = window.innerWidth + "px";
+          sectionPages[i].style.height = window.innerHeight - 80 + "px";
+        }
+
+        console.log(
+          " section width : " +
+            sectionPages[0].style.width +
+            "/ section height : " +
+            sectionPages[0].style.height
+        );
+      });
+    </script>
+  </body>
 </html>
