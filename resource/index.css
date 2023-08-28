@@ -1,0 +1,162 @@
+/* 폰트 스타일 !! */
+
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&family=Oswald:wght@300&display=swap");
+
+@media (max-width: 600px) {
+  body {
+    overflow-x: hidden; /* 가로 스크롤 제거 */
+  }
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background-color: rgba(0, 0, 0, 0);
+}
+.navbar nav {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar a {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+  margin-left: 3%;
+  margin-right: 3%;
+  font-weight: bold;
+  font-family: "Oswald", sans-serif;
+}
+.navbar a:hover {
+  color: lightblue;
+}
+.sidebar {
+  width: 2%;
+  height: 40%;
+
+  position: fixed;
+  right: 5%;
+  bottom: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar nav a {
+  width: 100%;
+  padding-bottom: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  margin-top: 100%;
+  margin-bottom: 100%;
+}
+
+.gageBar {
+  display: flex;
+  justify-content: right;
+  align-items: end;
+  position: absolute;
+}
+
+.gageBar img {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 0;
+}
+.container_row {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: start;
+}
+.container_colum {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutMe_head {
+  background-color: white;
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+}
+.aboutMe_head p {
+  width: 90%;
+  font-weight: bold;
+  font-family: "Oswald", sans-serif;
+}
+.aboutMe_body {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+
+  font-family: "Oswald", sans-serif;
+  font-family: "Gowun Dodum", sans-serif;
+}
+.aboutMe_body div {
+  width: 80%;
+  margin: 0;
+  padding: 1%;
+  font-size: 1rem;
+}
+
+/* 상단 올리는 네비이미지 */
+#top {
+  /* 반응형 정사각 형 만드는 방법 */
+  width: 7%;
+  padding-bottom: 7%;
+
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+}
+#top a {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: white;
+  border-radius: 50%;
+  background-color: black;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
