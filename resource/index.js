@@ -8,11 +8,11 @@ let count = 1;
 let imgCount = 1;
 
 let currSection = sectionPages[pageNum];
-const gageBar = document.querySelector(".gageBar");
-const gageBarDiv = document.querySelector(".gageBar> div");
-const gageBarImg = document.querySelector(".gageBar > img");
+const mainAni = document.querySelector(".mainAni");
+const mainAniDiv = document.querySelector(".mainAni> div");
+const mainAniImg = document.querySelector(".mainAni > img");
 let raf; // requestAnimationFrame을 담을 변수
-let width = 0; // 메인화면 게이지바 관련 가로축 초기화값
+let time = 0; // 메인화면 로딩창 시간 관련 변수
 
 //네비게이션 관련 변수
 const navSide = document.querySelectorAll(".sidebar a");
@@ -31,38 +31,40 @@ for (let i = 0; i < section_size; i++) {
 navSide[0].style.backgroundColor = change_sidebar_color;
 
 //0번쨰 section gageBar 사이즈 설정
-gageBar.style.width = "0%";
-gageBar.style.height = "1%";
-gageBar.style.backgroundColor = "black";
-gageBar.style.top = "49.5%";
-gageBar.style.left = "17%";
+// gageBar.style.width = "0%";
+// gageBar.style.height = "1%";
+// gageBar.style.backgroundColor = "black";
+// gageBar.style.top = "49.5%";
+// gageBar.style.left = "17%";
 
-gageBarDiv.style.width = "100%";
-gageBarDiv.style.height = "100%";
+// gageBarDiv.style.width = "100%";
+// gageBarDiv.style.height = "100%";
 // -----------------------------------------------------초기화
 
 // ----------------------------------------------------- 함수
-function gageBar_animation() {
-  gageBar.style.width = width / 2 + "%";
-  width += 1;
 
-  if (width > imgCount * 3 * count) {
-    imgCount += 1;
-    if (imgCount > 6) {
-      imgCount = 1;
-      count += 1;
-    }
-    console.log(imgCount);
-  }
-  gageBarImg.src = "resource/dogAni/dog" + imgCount + ".png";
-  if (width > 120) {
+const body = document.querySelector("body");
+function main_animation() {
+  time++;
+  document.querySelector("header").style.display = "none";
+  document.querySelector("#section0").style.backgroundColor =
+    "rgba(255, 255, 255, 1)";
+
+  body.classList.add("stop-scrolling");
+
+  if (time > 120) {
+    document.querySelector("header").style.display = "block";
+    document.querySelector("#section0").style.backgroundColor =
+      "rgb(240, 255, 223)";
+
+    mainAniImg.src = "";
+    body.classList.remove("stop-scrolling");
     cancelAnimationFrame(raf);
     return;
   }
-  raf = requestAnimationFrame(gageBar_animation);
+  raf = requestAnimationFrame(main_animation);
 }
-
-requestAnimationFrame(gageBar_animation);
+requestAnimationFrame(main_animation);
 
 function change_sidebar_color(_target) {
   if (currSidebar != _target) {
