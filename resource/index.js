@@ -1,5 +1,7 @@
 // -----------------------------------------------------변수
 // 페이지, 부분페이지 관련 변수
+const body = document.querySelector("body");
+const loadingText = document.querySelectorAll(".loading");
 const totalPage_Element = document.getElementById("totalpage");
 const sectionPages = totalPage_Element.getElementsByClassName("section");
 const section_size = sectionPages.length;
@@ -9,7 +11,6 @@ let imgCount = 1;
 
 let currSection = sectionPages[pageNum];
 const mainAni = document.querySelector(".mainAni");
-const mainAniDiv = document.querySelector(".mainAni> div");
 const mainAniImg = document.querySelector(".mainAni > img");
 let raf; // requestAnimationFrame을 담을 변수
 let time = 0; // 메인화면 로딩창 시간 관련 변수
@@ -43,22 +44,28 @@ navSide[0].style.backgroundColor = change_sidebar_color;
 
 // ----------------------------------------------------- 함수
 
-const body = document.querySelector("body");
+// --------------------------------------------------- 로딩기능.
+
+let paddingVal = 0;
+const max_paddingVal = 30;
 function main_animation() {
   time++;
-  document.querySelector("header").style.display = "none";
-  document.querySelector("#section0").style.backgroundColor =
+  mainAni.style.height = window.innerHeight + "px";
+  document.querySelector("#wrap").style.display = "none";
+  document.querySelector("#wrap").style.backgroundColor =
     "rgba(255, 255, 255, 1)";
 
-  body.classList.add("stop-scrolling");
+  //LOADING 글자 올라갔다 내려갔다.. 도전 !
+
+  for (let char in loadingText) {
+    char.style.paddingBottom = paddingVal + "px";
+  }
 
   if (time > 120) {
-    document.querySelector("header").style.display = "block";
-    document.querySelector("#section0").style.backgroundColor =
-      "rgb(240, 255, 223)";
-
+    document.querySelector("#wrap").style.display = "block";
+    document.querySelector("#wrap").style.backgroundColor = "rgb(1, 1, 1, 0)";
+    mainAni.style.display = "none";
     mainAniImg.src = "";
-    body.classList.remove("stop-scrolling");
     cancelAnimationFrame(raf);
     return;
   }
@@ -66,6 +73,7 @@ function main_animation() {
 }
 requestAnimationFrame(main_animation);
 
+// ----------------------------------------- 사이드 바 색상 변경
 function change_sidebar_color(_target) {
   if (currSidebar != _target) {
     currSidebar.style.backgroundColor = default_color;
@@ -74,6 +82,7 @@ function change_sidebar_color(_target) {
   currSidebar.style.backgroundColor = change_color;
 }
 
+// --------------- 휠 스크롤 이벤트 시 사이드 바 이동 처리.
 window.addEventListener("wheel", function () {
   let scrollTop = window.pageYOffset;
   let sidebar_Count = 0;
@@ -87,6 +96,8 @@ window.addEventListener("wheel", function () {
     change_sidebar_color(navSide[3]);
   }
 });
+
+// -----------------------------------------------------------휠 스크롤 이동 함수 이벤트 인데 뭔가 말 안들어 처머금 ㅠㅜ
 // window.addEventListener("wheel", function (event) {
 //   // 현재 페이지 번호 0이하인 경우 예외처리.
 //   if (pageNum < 0) {
@@ -125,12 +136,13 @@ window.addEventListener("wheel", function () {
 //   }
 // });
 
-//우측 사이드 바 색상 변경
+//-----------------------------------------사이트 생성되면서 자바스크립트 로딩시.. 우측 사이드 바 색상 변경
 for (let i = 0; i < navSide_size; i++) {
   navSide[i].addEventListener("click", function (event) {
     change_sidebar_color(event.target);
   });
 }
+
 window.addEventListener("resize", () => {
   if (window.innerHeight < 600 || window.innerWidth < 600) {
     // 미디어 쿼리... 자바스크립트로.. 특정 값 이하로 해상도가 줄어들었을 경우에 로직
